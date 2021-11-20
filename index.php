@@ -1,0 +1,5 @@
+<?php
+
+    //Begin of application
+
+?>
