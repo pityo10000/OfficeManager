@@ -4,7 +4,7 @@ abstract class Device {
     private $id;
     private $brand;
     private $model;
-    private $owner;
+    private $ownerId;
 
     public function getId() {
         return $this->id;
@@ -30,12 +30,12 @@ abstract class Device {
         $this->model = $model;
     }
 
-    public function getOwner() {
-        return $this->owner;
+    public function getOwnerId() {
+        return $this->ownerId;
     }
 
-    public function setOwner($owner) {
-        $this->owner = $owner;
+    public function setOwnerId($ownerId) {
+        $this->ownerId = $ownerId;
     }
 
 

@@ -8,7 +8,7 @@ class Employee {
     private $post;
     private $workingRoomId;
     private $supervisorId;
-    private $addressId;
+    private $homeAddressId;
 
     public function getId() {
         return $this->id;
@@ -58,11 +58,11 @@ class Employee {
         $this->supervisorId = $supervisorId;
     }
 
-    public function getAddressId() {
-        return $this->addressId;
+    public function getHomeAddressId() {
+        return $this->homeAddressId;
     }
 
-    public function setAddressId($addressId) {
-        $this->addressId = $addressId;
+    public function setHomeAddressId($homeAddressId) {
+        $this->homeAddressId = $homeAddressId;
     }
 }

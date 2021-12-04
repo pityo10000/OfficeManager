@@ -4,6 +4,7 @@ require_once 'util/UrlUtil.php';
 require_once 'controller/RoomController.php';
 require_once 'controller/AddressController.php';
 require_once 'controller/ComputerController.php';
+require_once 'controller/PhoneController.php';
 require_once 'controller/EmployeeController.php';
 require_once 'view/HomeView.php';
 
@@ -36,6 +37,7 @@ class Router {
                     $controller = new RoomController();
                     $controller->deleteRoom();
                     break;
+
                 case UrlUtil::NAV_ADDRESS_LIST:
                     $controller = new AddressController();
                     $controller->showList();
@@ -48,6 +50,7 @@ class Router {
                     $controller = new AddressController();
                     $controller->deleteAddress();
                     break;
+
                 case UrlUtil::NAV_COMPUTER_LIST:
                     $controller = new ComputerController();
                     $controller->showList();
@@ -64,6 +67,24 @@ class Router {
                     $controller = new ComputerController();
                     $controller->deleteComputer();
                     break;
+
+                case UrlUtil::NAV_PHONE_LIST:
+                    $controller = new PhoneController();
+                    $controller->showList();
+                    break;
+                case UrlUtil::NAV_EDIT_PHONE:
+                    $controller = new PhoneController();
+                    $controller->showEditForm();
+                    break;
+                case UrlUtil::NAV_NEW_PHONE:
+                    $controller = new PhoneController();
+                    $controller->showNewForm();
+                    break;
+                case UrlUtil::NAV_DELETE_PHONE:
+                    $controller = new PhoneController();
+                    $controller->deletePhone();
+                    break;
+
                 case UrlUtil::NAV_EMPLOYEE_LIST:
                     $controller = new EmployeeController();
                     $controller->showList();
@@ -102,10 +123,12 @@ class Router {
                     $controller = new RoomController();
                     $controller->createRoom();
                     break;
+
                 case UrlUtil::OPERATION_CREATE_ADDRESS:
                     $controller = new AddressController();
                     $controller->createAddress();
                     break;
+
                 case UrlUtil::OPERATION_MODIFY_COMPUTER:
                     $controller = new ComputerController();
                     $controller->modifyComputer();
@@ -114,6 +137,16 @@ class Router {
                     $controller = new ComputerController();
                     $controller->createComputer();
                     break;
+
+                case UrlUtil::OPERATION_MODIFY_PHONE:
+                    $controller = new PhoneController();
+                    $controller->modifyPhone();
+                    break;
+                case UrlUtil::OPERATION_CREATE_PHONE:
+                    $controller = new PhoneController();
+                    $controller->createPhone();
+                    break;
+
                 case UrlUtil::OPERATION_MODIFY_EMPLOYEE:
                     $controller = new EmployeeController();
                     $controller->modifyEmployee();

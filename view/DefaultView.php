@@ -29,6 +29,7 @@ abstract class DefaultView {
           <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ROOM_LIST . '">Szobák</a>
           <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ADDRESS_LIST . '">Címjegyzék</a>
           <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_COMPUTER_LIST . '">Számítógépek</a>
+          <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_PHONE_LIST . '">Telefonok</a>
           <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST . '">Alkalmazottak</a>
         </nav>
         ';

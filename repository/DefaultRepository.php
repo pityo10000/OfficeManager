@@ -34,10 +34,8 @@ class DefaultRepository {
     }
 
     protected function runQuery($query) {
-        echo $query;
+//        echo $query;
         $result = $this->connection->query($query);
-        echo "<br/>";
-        print_r($result);
         return $result;
     }
 

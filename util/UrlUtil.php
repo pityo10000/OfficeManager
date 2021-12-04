@@ -10,11 +10,14 @@ class UrlUtil {
 
     const OPERATION_CREATE_ADDRESS = 'createAddress';
 
+    const OPERATION_CREATE_EMPLOYEE = 'createEmployee';
+    const OPERATION_MODIFY_EMPLOYEE = 'modifyEmployee';
+
     const OPERATION_CREATE_COMPUTER = 'createComputer';
     const OPERATION_MODIFY_COMPUTER = 'modifyComputer';
 
-    const OPERATION_CREATE_EMPLOYEE = 'createEmployee';
-    const OPERATION_MODIFY_EMPLOYEE = 'modifyEmployee';
+    const OPERATION_CREATE_PHONE = 'createPhone';
+    const OPERATION_MODIFY_PHONE = 'modifyPhone';
 
     #GET navigations
     const NAV_ROOM_LIST = 'roomList';
@@ -35,5 +38,10 @@ class UrlUtil {
     const NAV_NEW_COMPUTER = 'newComputer';
     const NAV_EDIT_COMPUTER = 'editComputer';
     const NAV_DELETE_COMPUTER = 'editComputer';
+
+    const NAV_PHONE_LIST = 'phoneList';
+    const NAV_NEW_PHONE = 'newPhone';
+    const NAV_EDIT_PHONE = 'editPhone';
+    const NAV_DELETE_PHONE = 'editPhone';
 
 }

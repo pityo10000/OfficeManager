@@ -1,13 +1,13 @@
 <?php
 require_once "view/DefaultView.php";
 
-class ComputerListView extends DefaultView {
+class PhoneListView extends DefaultView {
 
     public function __construct() {
-        parent::__construct("Számítógépek");
+        parent::__construct("Telefonok");
     }
 
-    public function show($computers) {
+    public function show($phones) {
         echo '
         <div class="row">
             <div class="col-md-2"></div>
@@ -16,7 +16,7 @@ class ComputerListView extends DefaultView {
             </div>
             <div class="col-md-5"></div>
             <div class="col-md-1">
-              <a class="btn btn-primary" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_NEW_COMPUTER . '">Új hozzáadása</a>      
+              <a class="btn btn-primary" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_NEW_PHONE . '">Új hozzáadása</a>      
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -30,8 +30,7 @@ class ComputerListView extends DefaultView {
                       <th scope="col">Azonosító</th>
                       <th scope="col">Márka</th>
                       <th scope="col">Modell</th>
-                      <th scope="col">Tárhely</th>
-                      <th scope="col">RAM</th>
+                      <th scope="col">Telefonszám</th>
                       <th scope="col">Tulajdonos</th>
                       <th scope="col">Műveletek</th>
                     </tr>
@@ -39,18 +38,17 @@ class ComputerListView extends DefaultView {
                   <tbody>
             ';
 
-        foreach ($computers as $computer) {
+        foreach ($phones as $phone) {
             echo '
                 <tr>
-                  <td>' . $computer->getId() .'</td>
-                  <td>' . $computer->getBrand() .'</td>
-                  <td>' . $computer->getModel() .'</td>
-                  <td>' . $computer->getStorage() .'</td>
-                  <td>' . $computer->getRam() .'</td>
-                  <td>' . $computer->getOwnerId() .'</td>
+                  <td>' . $phone->getId() .'</td>
+                  <td>' . $phone->getBrand() .'</td>
+                  <td>' . $phone->getModel() .'</td>
+                  <td>' . $phone->getPhoneNumber() .'</td>
+                  <td>' . $phone->getOwnerId() .'</td>
                   <td>
-                    <a class="btn btn-primary" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EDIT_COMPUTER . '&id=' . $computer->getId() . '">Szerkesztés</a>              
-                    <a class="btn btn-danger" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_DELETE_COMPUTER . '&id=' . $computer->getId() . '">Törlés</a>              
+                    <a class="btn btn-primary" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EDIT_PHONE . '&id=' . $phone->getId() . '">Szerkesztés</a>              
+                    <a class="btn btn-danger" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_DELETE_PHONE . '&id=' . $phone->getId() . '">Törlés</a>              
                   </td>
                 </tr>
             ';

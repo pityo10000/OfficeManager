@@ -15,11 +15,11 @@ class EmployeeFormView extends DefaultView {
         }
     }
 
-    public function showNew($rooms) {
-        $this->showEdit(null, $rooms);
+    public function showNew($rooms, $addresses, $supervisors) {
+        $this->showEdit(null, $rooms, $addresses, $supervisors);
     }
 
-    public function showEdit($employee, $rooms) {
+    public function showEdit($employee, $rooms, $addresses, $supervisors) {
         if ($employee == null) {
             $employee = new Employee();
         } else {
@@ -78,6 +78,66 @@ class EmployeeFormView extends DefaultView {
                         }
                         echo '<option value="' . $room->getId()  . '" ' . $selected . '>Emelet: ' . $room->getFloor() . ', Ajtó: '
                             . $room->getDoorNumber() . '</option>';
+                    }
+
+                    echo '</select>
+                              </div>
+                          </div>     
+                      </div>
+                      <div class=" form-group">
+                          <p>
+                              <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#addresses">
+                              Lakcím szerkesztése
+                              </button>
+                          </p>
+                          <div class="row">
+                              <div class="collapse" id="addresses">
+                                <select class="custom-select" name="homeAddressId">';
+
+                    $selected = '';
+                    if ($employee->getHomeAddressId() == null) {
+                        $selected = 'selected';
+                    }
+                    echo '<option ' . $selected . ' value="null">Nincs hozzárendelve lakcím</option>';
+
+                    foreach ($addresses as $address) {
+                        $selected = '';
+                        if ($address->getId() == $employee->getHomeAddressId()) {
+                            $selected = 'selected';
+                        }
+                        echo '<option value="' . $address->getId()  . '" ' . $selected . '>' . $address->getZipCode() . ', ' . $address->getCountry() . ', '
+                            . $address->getCity() . ', ' . $address->getStreetName() . ' ' . $address->getStreetType() . ' ' . $address->getStreetNumber() . '</option>';
+                    }
+
+                    echo '</select>
+                              </div>
+                          </div>     
+                      </div>
+                      <div class=" form-group">
+                          <p>
+                              <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#supervisors">
+                              Felettes szerkesztése
+                              </button>
+                          </p>
+                          <div class="row">
+                              <div class="collapse" id="supervisors">
+                                <select class="custom-select" name="supervisorId">';
+
+                    $selected = '';
+                    if ($employee->getSupervisorId() == null) {
+                        $selected = 'selected';
+                    }
+                    echo '<option ' . $selected . ' value="null">Nincs hozzárendelve felettes</option>';
+
+                    foreach ($supervisors as $supervisor) {
+                        $selected = '';
+                        if ($supervisor->getId() == $employee->getSupervisorId()) {
+                            $selected = 'selected';
+                        }
+                        if ($supervisor->getId() != $employee->getId()) {
+                            echo '<option value="' . $supervisor->getId()  . '" ' . $selected . '>#' . $supervisor->getId() . ', ' . $supervisor->getLastName() . ' '
+                                . $supervisor->getFirstName() . ' (Munkakör: ' . $supervisor->getPost() . ')</option>';
+                        }
                     }
 
                     echo '</select>

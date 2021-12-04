@@ -1,16 +1,19 @@
 <?php
 require_once "service/EmployeeService.php";
 require_once "service/RoomService.php";
+require_once "service/AddressService.php";
 require_once "view/employee/EmployeeListView.php";
 require_once "view/employee/EmployeeFormView.php";
 
 class EmployeeController {
     private $employeeService;
     private $roomService;
+    private $addressService;
 
     public function __construct() {
         $this->employeeService = new EmployeeService();
         $this->roomService = new RoomService();
+        $this->addressService = new AddressService();
     }
 
     public function showList() {
@@ -24,8 +27,10 @@ class EmployeeController {
             $id = $_GET['id'];
             $employee = $this->employeeService->findById($id);
             $rooms = $this->roomService->findAll();
+            $addresses = $this->addressService->findAll();
+            $supervisors = $this->employeeService->findAll();
             $view = new EmployeeFormView(false);
-            $view->showEdit($employee, $rooms);
+            $view->showEdit($employee, $rooms, $addresses, $supervisors);
         } else {
             echo "Nem található ilyen ID-val alkalmazott";
         }
@@ -33,8 +38,10 @@ class EmployeeController {
 
     public function showNewForm() {
         $rooms = $this->roomService->findAll();
+        $addresses = $this->addressService->findAll();
+        $supervisors = $this->employeeService->findAll();
         $view = new EmployeeFormView(true);
-        $view->showNew($rooms);
+        $view->showNew($rooms, $addresses, $supervisors);
     }
 
     public function modifyEmployee() {
@@ -44,23 +51,20 @@ class EmployeeController {
         $post = $_POST['post'];
 
         $workingRoomId = "null";
-        echo "heyho1: " . $workingRoomId;
         if (isset($_POST['workingRoomId'])) {
-            echo "heyho2: " . $_POST['workingRoomId'];
             $workingRoomId = $_POST['workingRoomId'];
         }
-        echo "heyho3: " . $workingRoomId;
         $supervisorId = "null";
         if (isset($_POST['supervisorId'])) {
             $supervisorId = $_POST['supervisorId'];
         }
         $addressId = "null";
-        if (isset($_POST['addressId'])) {
-            $addressId = $_POST['addressId'];
+        if (isset($_POST['homeAddressId'])) {
+            $addressId = $_POST['homeAddressId'];
         }
 
         $this->employeeService->modifyById($id, $firstName, $lastName, $post, $workingRoomId, $supervisorId, $addressId);
-//        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST);
+        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST);
     }
 
     public function createEmployee() {
@@ -77,8 +81,8 @@ class EmployeeController {
             $supervisorId = $_POST['supervisorId'];
         }
         $addressId = "null";
-        if (isset($_POST['addressId'])) {
-            $addressId = $_POST['addressId'];
+        if (isset($_POST['homeAddressId'])) {
+            $addressId = $_POST['homeAddressId'];
         }
 
         $this->employeeService->insert($firstName, $lastName, $post, $workingRoomId, $supervisorId, $addressId);

@@ -1,17 +1,17 @@
 <?php
 require_once 'view/DefaultView.php';
-require_once 'model/Computer.php';
+require_once 'model/Phone.php';
 
 
-class ComputerFormView extends DefaultView {
+class PhoneFormView extends DefaultView {
     private $isNewItem;
 
     public function __construct($isNewItem) {
         $this->isNewItem = $isNewItem;
         if ($this->isNewItem) {
-            parent::__construct("Új számítógép");
+            parent::__construct("Új telefon");
         } else {
-            parent::__construct("Számítógép szerkesztése");
+            parent::__construct("Telefon szerkesztése");
         }
     }
 
@@ -19,11 +19,11 @@ class ComputerFormView extends DefaultView {
         $this->showEdit(null, $employees);
     }
 
-    public function showEdit($computer, $employees) {
-        if ($computer == null) {
-            $computer = new Computer();
+    public function showEdit($phone, $employees) {
+        if ($phone == null) {
+            $phone = new Phone();
         } else {
-            echo '<br/><center><h4>Számítógép azonosító: ' . $computer->getId() . '</center></h4>';
+            echo '<br/><center><h4>Számítógép azonosító: ' . $phone->getId() . '</center></h4>';
         }
 
         echo '
@@ -34,30 +34,26 @@ class ComputerFormView extends DefaultView {
                 if ($this->isNewItem) {
                     echo '
                     <form method="POST" action="' . UrlUtil::MAIN_URL . '">
-                      <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_CREATE_COMPUTER . '"/>
+                      <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_CREATE_PHONE . '"/>
                     ';
                 } else {
                     echo '
                     <form method="POST" action="' . UrlUtil::MAIN_URL . '">
-                      <input type="hidden" name="id" value="' . $computer->getId() . '"/>
-                    <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_MODIFY_COMPUTER . '"/>
+                      <input type="hidden" name="id" value="' . $phone->getId() . '"/>
+                    <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_MODIFY_PHONE . '"/>
                       ';
                 }
                       echo '<div class="form-group">
                         <label for="floor">Márka</label>
-                        <input type="text" class="form-control" id="brand" name="brand" value="' . $computer->getBrand() . '" required>
+                        <input type="text" class="form-control" id="brand" name="brand" value="' . $phone->getBrand() . '" required>
                       </div>
                       <div class="form-group">
                         <label for="doorNumber">Modell</label>
-                        <input type="text" class="form-control" id="model" name="model" value="' . $computer->getModel() . '" required>
+                        <input type="text" class="form-control" id="model" name="model" value="' . $phone->getModel() . '" required>
                       </div>
                       <div class="form-group">
-                        <label for="capacity">Tárhely</label>
-                        <input type="text" class="form-control" id="storage" name="storage" value="' . $computer->getStorage() . '" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="doorNumber">RAM</label>
-                        <input type="text" class="form-control" id="ram" name="ram" value="' . $computer->getRam() . '" required>
+                        <label for="phoneNumber">Telefonszám</label>
+                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="' . $phone->getPhoneNumber() . '" required>
                       </div>
                       
                       <div class=" form-group">
@@ -71,14 +67,14 @@ class ComputerFormView extends DefaultView {
                                 <select class="custom-select" name="ownerId">';
 
                     $selected = '';
-                    if ($computer->getOwnerId() == null) {
+                    if ($phone->getOwnerId() == null) {
                         $selected = 'selected';
                     }
                     echo '<option ' . $selected . ' value="null">Nincs hozzárendelve tulajdonos</option>';
 
                     foreach ($employees as $employee) {
                         $selected = '';
-                        if ($employee->getId() == $computer->getOwnerId()) {
+                        if ($employee->getId() == $phone->getOwnerId()) {
                             $selected = 'selected';
                         }
                         echo '<option value="' . $employee->getId()  . '" ' . $selected . '>#' . $employee->getId() . ', ' . $employee->getLastName() . ' '
@@ -95,7 +91,7 @@ class ComputerFormView extends DefaultView {
                         </div>
                         <div class="col-md-9"></div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_COMPUTER_LIST . '">Vissza</a>
+                            <a class="btn btn-default" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_PHONE_LIST . '">Vissza</a>
                         </div>
                       </div>
                 </form>

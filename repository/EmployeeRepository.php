@@ -36,7 +36,7 @@ class EmployeeRepository extends DefaultRepository {
         $employee->setPost($result["POST"]);
         $employee->setWorkingRoomId($result["WORKING_ROOM_ID"]);
         $employee->setSupervisorId($result["SUPERVISOR_ID"]);
-        $employee->setAddressId($result["ADDRESS_ID"]);
+        $employee->setHomeAddressId($result["ADDRESS_ID"]);
         return $employee;
     }
 

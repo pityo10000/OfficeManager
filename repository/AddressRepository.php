@@ -39,8 +39,8 @@ class AddressRepository extends DefaultRepository {
     }
 
     function insert($streetName, $streetType, $streetNumber, $zipCode, $city, $country) {
-        $this->runQuery('INSERT INTO ADDRESS (STREET_NAME, STREET_TYPE, STREET_NUMBER, ZIP_CODE, CITY, COUNTRY) VALUE
-            (' . $streetName . ', ' . $streetType . ', ' . $streetNumber . ', ' . $zipCode . ', ' . $city . ', ' . $country . ')');
+        $this->runQuery("INSERT INTO ADDRESS (STREET_NAME, STREET_TYPE, STREET_NUMBER, ZIP_CODE, CITY, COUNTRY) VALUE
+            ('" . $streetName . "', '" . $streetType . "', '" . $streetNumber . "', '" . $zipCode . "', '" . $city . "', '" . $country . "')");
     }
 
     function delete($id) {

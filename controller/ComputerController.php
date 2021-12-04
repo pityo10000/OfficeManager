@@ -1,13 +1,16 @@
 <?php
 require_once "service/ComputerService.php";
+require_once "service/EmployeeService.php";
 require_once "view/computer/ComputerListView.php";
 require_once "view/computer/ComputerFormView.php";
 
 class ComputerController {
     private $computerService;
+    private $employeeService;
 
     public function __construct() {
         $this->computerService = new ComputerService();
+        $this->employeeService = new EmployeeService();
     }
 
     public function showList() {
@@ -19,17 +22,19 @@ class ComputerController {
     public function showEditForm() {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
+            $employees = $this->employeeService->findAll();
             $computer = $this->computerService->findById($id);
             $view = new ComputerFormView(false);
-            $view->showEdit($computer);
+            $view->showEdit($computer, $employees);
         } else {
             echo "Nem található ilyen ID-val számítógép";
         }
     }
 
     public function showNewForm() {
+        $employees = $this->employeeService->findAll();
         $view = new ComputerFormView(true);
-        $view->showNew();
+        $view->showNew($employees);
     }
 
     public function modifyComputer() {

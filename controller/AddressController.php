@@ -30,7 +30,7 @@ class AddressController {
         $country = $_POST['country'];
 
         $this->addressService->insert($streetName, $streetType, $streetNumber, $zipCode, $city, $country);
-//        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ADDRESS_LIST);
+        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ADDRESS_LIST);
     }
 
     public function deleteAddress() {

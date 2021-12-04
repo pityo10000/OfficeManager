@@ -40,6 +40,7 @@ class ComputerRepository extends DefaultRepository {
         $computer->setId($result["ID"]);
         $computer->setBrand($result["BRAND"]);
         $computer->setModel($result["MODEL"]);
+        $computer->setOwnerId($result["OWNER_ID"]);
         $computer->setRam($result["RAM"]);
         $computer->setStorage($result["STORAGE"]);
         return $computer;
