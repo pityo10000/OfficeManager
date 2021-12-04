@@ -1,5 +1,8 @@
 <?php
 
-    //Begin of application
+require_once 'Router.php';
+
+Router::handleRequest();
+
 
 ?>
