@@ -6,6 +6,7 @@ class Room {
     private $doorNumber;
     private $capacity;
     private $floor;
+    private $employeeCount;
 
     public function getId() {
         return $this->id;
@@ -39,4 +40,11 @@ class Room {
         $this->floor = $floor;
     }
 
+    public function getEmployeeCount() {
+        return $this->employeeCount;
+    }
+
+    public function setEmployeeCount($employeeCount) {
+        $this->employeeCount = $employeeCount;
+    }
 }
