@@ -1,7 +1,7 @@
 <?php
 require_once "model/Phone.php";
 require_once "model/Device.php";
-require_once "repository/DefaultRepository.php";
+require_once "repository/DeviceRepository.php";
 
 class PhoneRepository extends DeviceRepository {
     function findAll() {

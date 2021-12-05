@@ -45,7 +45,7 @@ class PhoneListView extends DefaultView {
                   <td>' . $phone->getBrand() .'</td>
                   <td>' . $phone->getModel() .'</td>
                   <td>' . $phone->getPhoneNumber() .'</td>
-                  <td>' . $phone->getOwnerId() .'</td>
+                  <td>#' . $phone->getOwnerId() .'</td>
                   <td>
                     <a class="btn btn-primary" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EDIT_PHONE . '&id=' . $phone->getId() . '">Szerkesztés</a>              
                     <a class="btn btn-danger" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_DELETE_PHONE . '&id=' . $phone->getId() . '">Törlés</a>              

@@ -37,12 +37,12 @@ class UrlConstants {
     const NAV_COMPUTER_LIST = 'computerList';
     const NAV_NEW_COMPUTER = 'newComputer';
     const NAV_EDIT_COMPUTER = 'editComputer';
-    const NAV_DELETE_COMPUTER = 'editComputer';
+    const NAV_DELETE_COMPUTER = 'deleteComputer';
 
     const NAV_PHONE_LIST = 'phoneList';
     const NAV_NEW_PHONE = 'newPhone';
     const NAV_EDIT_PHONE = 'editPhone';
-    const NAV_DELETE_PHONE = 'editPhone';
+    const NAV_DELETE_PHONE = 'deletePhone';
 
     const NAV_DOWNLOAD_LABOUR_CONTRACT = 'downloadLabourContract';
 

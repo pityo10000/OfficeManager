@@ -5,7 +5,12 @@ require_once "repository/DefaultRepository.php";
 class RoomRepository extends DefaultRepository {
 
     function findAll() {
-        $results = $this->runQuery("SELECT R.ID, R.DOOR_NUMBER, R.CAPACITY, R.FLOOR FROM ROOM R");
+        $results = $this->runQuery("SELECT R.ID, R.DOOR_NUMBER, R.CAPACITY, R.FLOOR, (
+            SELECT COUNT(E.ID)
+            FROM employee E
+            WHERE E.WORKING_ROOM_ID = R.ID
+            ) AS EMPLOYEE_COUNT
+        FROM ROOM R");
         $rooms = array();
         while ($result = $results->fetch_assoc()) {
             $room = $this->resultToRoom($result);
@@ -32,6 +37,9 @@ class RoomRepository extends DefaultRepository {
         $room->setDoorNumber($result["DOOR_NUMBER"]);
         $room->setCapacity($result["CAPACITY"]);
         $room->setFloor($result["FLOOR"]);
+        if (isset($result["EMPLOYEE_COUNT"])) {
+            $room->setEmployeeCount($result["EMPLOYEE_COUNT"]);
+        }
         return $room;
     }
 

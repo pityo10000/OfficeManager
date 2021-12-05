@@ -47,7 +47,7 @@ class ComputerListView extends DefaultView {
                   <td>' . $computer->getModel() .'</td>
                   <td>' . $computer->getStorage() .'</td>
                   <td>' . $computer->getRam() .'</td>
-                  <td>' . $computer->getOwnerId() .'</td>
+                  <td>#' . $computer->getOwnerId() .'</td>
                   <td>
                     <a class="btn btn-primary" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EDIT_COMPUTER . '&id=' . $computer->getId() . '">Szerkesztés</a>              
                     <a class="btn btn-danger" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_DELETE_COMPUTER . '&id=' . $computer->getId() . '">Törlés</a>              

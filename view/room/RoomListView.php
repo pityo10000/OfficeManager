@@ -29,6 +29,7 @@ class RoomListView extends DefaultView {
                     <tr>
                       <th scope="col">Emelet</th>
                       <th scope="col">Ajtó száma</th>
+                      <th scope="col">Létszám</th>
                       <th scope="col">Férőhely</th>
                       <th scope="col">Műveletek</th>
                     </tr>
@@ -37,10 +38,15 @@ class RoomListView extends DefaultView {
             ';
 
         foreach ($rooms as $room) {
+            $overloaded = "";
+            if ($room->getCapacity() < $room->getEmployeeCount()) {
+                $overloaded = ' style="color: red; font-weight: bold;" ';
+            }
             echo '
                 <tr>
                   <td>' . $room->getFloor() .'</td>
                   <td>' . $room->getDoorNumber() .'</td>
+                  <td' . $overloaded . '>' . $room->getEmployeeCount() .'</td>
                   <td>' . $room->getCapacity() .'</td>
                   <td>
                     <a class="btn btn-primary" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EDIT_ROOM . '&id=' . $room->getId() . '">Szerkesztés</a>              

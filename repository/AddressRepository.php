@@ -5,7 +5,10 @@ require_once "repository/DefaultRepository.php";
 class AddressRepository extends DefaultRepository {
 
     function findAll() {
-        $results = $this->runQuery("SELECT A.ID, A.STREET_NAME, A.STREET_TYPE, A.STREET_NUMBER, A.ZIP_CODE, A.CITY, A.COUNTRY FROM ADDRESS A");
+        $results = $this->runQuery("SELECT A.ID, A.STREET_NAME, A.STREET_TYPE, A.STREET_NUMBER, A.ZIP_CODE, A.CITY, A.COUNTRY, COUNT(E.ID) AS EMPLOYEE_COUNT
+        FROM ADDRESS A
+        LEFT JOIN EMPLOYEE E on A.ID = E.ADDRESS_ID
+        GROUP BY E.ID");
         $addresses = array();
         while ($result = $results->fetch_assoc()) {
             $address = $this->resultToAddress($result);
@@ -35,6 +38,9 @@ class AddressRepository extends DefaultRepository {
         $address->setZipCode($result["ZIP_CODE"]);
         $address->setCity($result["CITY"]);
         $address->setCountry($result["COUNTRY"]);
+        if (isset($result["EMPLOYEE_COUNT"])) {
+            $address->setEmployeeCount($result["EMPLOYEE_COUNT"]);
+        }
         return $address;
     }
 

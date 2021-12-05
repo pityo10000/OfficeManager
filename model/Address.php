@@ -9,6 +9,7 @@ class Address {
     private $country;
     private $streetName;
     private $streetType;
+    private $employeeCount;
 
     public function getId() {
         return $this->id;
@@ -66,6 +67,12 @@ class Address {
         $this->streetType = $streetType;
     }
 
+    public function getEmployeeCount() {
+        return $this->employeeCount;
+    }
 
+    public function setEmployeeCount($employeeCount) {
+        $this->employeeCount = $employeeCount;
+    }
 
 }

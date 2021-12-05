@@ -27,13 +27,13 @@ class AddressListView extends DefaultView {
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">Azonosító</th>
                       <th scope="col">Irányítószám</th>
                       <th scope="col">Ország</th>
                       <th scope="col">Város</th>
                       <th scope="col">Utca neve</th>
                       <th scope="col">Utca típusa</th>
                       <th scope="col">Házszám</th>
+                      <th scope="col">Alkalmazottak száma</th>
                       <th scope="col">Műveletek</th>
                     </tr>
                   </thead>
@@ -43,13 +43,13 @@ class AddressListView extends DefaultView {
         foreach ($addresses as $address) {
             echo '
                 <tr>
-                  <td>' . $address->getId() .'</td>
                   <td>' . $address->getZipCode() .'</td>
                   <td>' . $address->getCountry() .'</td>
                   <td>' . $address->getCity() .'</td>
                   <td>' . $address->getStreetName() .'</td>
                   <td>' . $address->getStreetType() .'</td>
                   <td>' . $address->getStreetNumber() .'</td>
+                  <td>' . $address->getEmployeeCount() .'</td>
                   <td>
                     <a class="btn btn-danger" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_DELETE_ADDRESS . '&id=' . $address->getId() . '">Törlés</a>              
                   </td>
