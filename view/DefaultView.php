@@ -26,11 +26,11 @@ abstract class DefaultView {
     private function buildMenu() {
         echo '
         <nav class="navbar navbar-light bg-light navbar-expand-md">
-          <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ROOM_LIST . '">Szobák</a>
-          <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ADDRESS_LIST . '">Címjegyzék</a>
-          <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_COMPUTER_LIST . '">Számítógépek</a>
-          <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_PHONE_LIST . '">Telefonok</a>
-          <a class="navbar-brand" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST . '">Alkalmazottak</a>
+          <a class="navbar-brand" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ROOM_LIST . '">Szobák</a>
+          <a class="navbar-brand" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ADDRESS_LIST . '">Címjegyzék</a>
+          <a class="navbar-brand" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_COMPUTER_LIST . '">Számítógépek</a>
+          <a class="navbar-brand" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_PHONE_LIST . '">Telefonok</a>
+          <a class="navbar-brand" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EMPLOYEE_LIST . '">Alkalmazottak</a>
         </nav>
         ';
     }

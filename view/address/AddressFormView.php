@@ -16,8 +16,8 @@ class AddressFormView extends DefaultView {
             <div class="col-md-8">';
 
                     echo '
-                    <form method="POST" action="' . UrlUtil::MAIN_URL . '">
-                        <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_CREATE_ADDRESS . '"/>
+                    <form method="POST" action="' . UrlConstants::MAIN_URL . '">
+                        <input type="hidden" name="operation" value="' . UrlConstants::OPERATION_CREATE_ADDRESS . '"/>
                         <div class="row form-group">
                         <label for="zipCode">Irányítószám</label>
                         <input type="text" class="form-control" id="zipCode" name="zipCode" required>
@@ -48,7 +48,7 @@ class AddressFormView extends DefaultView {
                         </div>
                         <div class="col-md-9"></div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ADDRESS_LIST . '">Vissza</a>
+                            <a class="btn btn-default" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ADDRESS_LIST . '">Vissza</a>
                         </div>
                       </div>
                 </form>

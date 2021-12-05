@@ -1,5 +1,5 @@
 <?php
-require_once "repository/PhoneRepository.php";
+require_once "repository/DeviceRepository.php";
 
 class PhoneService {
     private $phoneRepository;

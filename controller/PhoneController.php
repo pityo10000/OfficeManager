@@ -48,7 +48,7 @@ class PhoneController {
         }
 
         $this->phoneService->modifyById($id, $brand, $model, $ownerId, $phoneNumber);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_PHONE_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_PHONE_LIST);
     }
 
     public function createPhone() {
@@ -61,13 +61,13 @@ class PhoneController {
         }
 
         $this->phoneService->insert($brand, $model, $ownerId, $phoneNumber);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_PHONE_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_PHONE_LIST);
     }
 
     public function deletePhone() {
         $id = $_GET['id'];
 
         $this->phoneService->delete($id);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_PHONE_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_PHONE_LIST);
     }
 }

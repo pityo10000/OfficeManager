@@ -1,11 +1,12 @@
 <?php
 
-require_once 'util/UrlUtil.php';
+require_once 'constants/UrlConstants.php';
 require_once 'controller/RoomController.php';
 require_once 'controller/AddressController.php';
 require_once 'controller/ComputerController.php';
 require_once 'controller/PhoneController.php';
 require_once 'controller/EmployeeController.php';
+require_once 'controller/FileController.php';
 require_once 'view/HomeView.php';
 
 class Router {
@@ -21,85 +22,91 @@ class Router {
         if (isset($_GET['nav'])) {
             $nav = $_GET['nav'];
             switch ($nav) {
-                case UrlUtil::NAV_ROOM_LIST:
+                case UrlConstants::NAV_ROOM_LIST:
                     $controller = new RoomController();
                     $controller->showList();
                     break;
-                case UrlUtil::NAV_EDIT_ROOM:
+                case UrlConstants::NAV_EDIT_ROOM:
                     $controller = new RoomController();
                     $controller->showEditForm();
                     break;
-                case UrlUtil::NAV_NEW_ROOM:
+                case UrlConstants::NAV_NEW_ROOM:
                     $controller = new RoomController();
                     $controller->showNewForm();
                     break;
-                case UrlUtil::NAV_DELETE_ROOM:
+                case UrlConstants::NAV_DELETE_ROOM:
                     $controller = new RoomController();
                     $controller->deleteRoom();
                     break;
 
-                case UrlUtil::NAV_ADDRESS_LIST:
+                case UrlConstants::NAV_ADDRESS_LIST:
                     $controller = new AddressController();
                     $controller->showList();
                     break;
-                case UrlUtil::NAV_NEW_ADDRESS:
+                case UrlConstants::NAV_NEW_ADDRESS:
                     $controller = new AddressController();
                     $controller->showNewForm();
                     break;
-                case UrlUtil::NAV_DELETE_ADDRESS:
+                case UrlConstants::NAV_DELETE_ADDRESS:
                     $controller = new AddressController();
                     $controller->deleteAddress();
                     break;
 
-                case UrlUtil::NAV_COMPUTER_LIST:
+                case UrlConstants::NAV_COMPUTER_LIST:
                     $controller = new ComputerController();
                     $controller->showList();
                     break;
-                case UrlUtil::NAV_EDIT_COMPUTER:
+                case UrlConstants::NAV_EDIT_COMPUTER:
                     $controller = new ComputerController();
                     $controller->showEditForm();
                     break;
-                case UrlUtil::NAV_NEW_COMPUTER:
+                case UrlConstants::NAV_NEW_COMPUTER:
                     $controller = new ComputerController();
                     $controller->showNewForm();
                     break;
-                case UrlUtil::NAV_DELETE_COMPUTER:
+                case UrlConstants::NAV_DELETE_COMPUTER:
                     $controller = new ComputerController();
                     $controller->deleteComputer();
                     break;
 
-                case UrlUtil::NAV_PHONE_LIST:
+                case UrlConstants::NAV_PHONE_LIST:
                     $controller = new PhoneController();
                     $controller->showList();
                     break;
-                case UrlUtil::NAV_EDIT_PHONE:
+                case UrlConstants::NAV_EDIT_PHONE:
                     $controller = new PhoneController();
                     $controller->showEditForm();
                     break;
-                case UrlUtil::NAV_NEW_PHONE:
+                case UrlConstants::NAV_NEW_PHONE:
                     $controller = new PhoneController();
                     $controller->showNewForm();
                     break;
-                case UrlUtil::NAV_DELETE_PHONE:
+                case UrlConstants::NAV_DELETE_PHONE:
                     $controller = new PhoneController();
                     $controller->deletePhone();
                     break;
 
-                case UrlUtil::NAV_EMPLOYEE_LIST:
+                case UrlConstants::NAV_EMPLOYEE_LIST:
                     $controller = new EmployeeController();
                     $controller->showList();
                     break;
-                case UrlUtil::NAV_EDIT_EMPLOYEE:
+                case UrlConstants::NAV_EDIT_EMPLOYEE:
                     $controller = new EmployeeController();
                     $controller->showEditForm();
                     break;
-                case UrlUtil::NAV_NEW_EMPLOYEE:
+                case UrlConstants::NAV_NEW_EMPLOYEE:
                     $controller = new EmployeeController();
                     $controller->showNewForm();
                     break;
-                case UrlUtil::NAV_DELETE_EMPLOYEE:
+                case UrlConstants::NAV_DELETE_EMPLOYEE:
                     $controller = new EmployeeController();
                     $controller->deleteEmployee();
+                    break;
+
+                case UrlConstants::NAV_DOWNLOAD_LABOUR_CONTRACT:
+                    $controller = new FileController();
+                    $controller->downloadFile();
+                    exit();
                     break;
                 default:
                     print('404');
@@ -115,43 +122,43 @@ class Router {
             $operation = $_POST['operation'];
 
             switch ($operation) {
-                case UrlUtil::OPERATION_MODIFY_ROOM:
+                case UrlConstants::OPERATION_MODIFY_ROOM:
                     $controller = new RoomController();
                     $controller->modifyRoom();
                     break;
-                case UrlUtil::OPERATION_CREATE_ROOM:
+                case UrlConstants::OPERATION_CREATE_ROOM:
                     $controller = new RoomController();
                     $controller->createRoom();
                     break;
 
-                case UrlUtil::OPERATION_CREATE_ADDRESS:
+                case UrlConstants::OPERATION_CREATE_ADDRESS:
                     $controller = new AddressController();
                     $controller->createAddress();
                     break;
 
-                case UrlUtil::OPERATION_MODIFY_COMPUTER:
+                case UrlConstants::OPERATION_MODIFY_COMPUTER:
                     $controller = new ComputerController();
                     $controller->modifyComputer();
                     break;
-                case UrlUtil::OPERATION_CREATE_COMPUTER:
+                case UrlConstants::OPERATION_CREATE_COMPUTER:
                     $controller = new ComputerController();
                     $controller->createComputer();
                     break;
 
-                case UrlUtil::OPERATION_MODIFY_PHONE:
+                case UrlConstants::OPERATION_MODIFY_PHONE:
                     $controller = new PhoneController();
                     $controller->modifyPhone();
                     break;
-                case UrlUtil::OPERATION_CREATE_PHONE:
+                case UrlConstants::OPERATION_CREATE_PHONE:
                     $controller = new PhoneController();
                     $controller->createPhone();
                     break;
 
-                case UrlUtil::OPERATION_MODIFY_EMPLOYEE:
+                case UrlConstants::OPERATION_MODIFY_EMPLOYEE:
                     $controller = new EmployeeController();
                     $controller->modifyEmployee();
                     break;
-                case UrlUtil::OPERATION_CREATE_EMPLOYEE:
+                case UrlConstants::OPERATION_CREATE_EMPLOYEE:
                     $controller = new EmployeeController();
                     $controller->createEmployee();
                     break;

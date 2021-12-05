@@ -30,13 +30,13 @@ class AddressController {
         $country = $_POST['country'];
 
         $this->addressService->insert($streetName, $streetType, $streetNumber, $zipCode, $city, $country);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ADDRESS_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ADDRESS_LIST);
     }
 
     public function deleteAddress() {
         $id = $_GET['id'];
 
         $this->addressService->delete($id);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ADDRESS_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ADDRESS_LIST);
     }
 }

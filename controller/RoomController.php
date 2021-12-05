@@ -39,7 +39,7 @@ class RoomController {
         $capacity = $_POST['capacity'];
 
         $this->roomService->modifyRoomById($id, $floor, $doorNumber, $capacity);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ROOM_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ROOM_LIST);
     }
 
     public function createRoom() {
@@ -48,13 +48,13 @@ class RoomController {
         $capacity = $_POST['capacity'];
 
         $this->roomService->insert($floor, $doorNumber, $capacity);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ROOM_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ROOM_LIST);
     }
 
     public function deleteRoom() {
         $id = $_GET['id'];
 
         $this->roomService->delete($id);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ROOM_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ROOM_LIST);
     }
 }

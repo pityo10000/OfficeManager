@@ -1,7 +1,7 @@
 <?php
 
 
-class UrlUtil {
+class UrlConstants {
     const MAIN_URL = 'index.php';
 
     #POST operations
@@ -43,5 +43,7 @@ class UrlUtil {
     const NAV_NEW_PHONE = 'newPhone';
     const NAV_EDIT_PHONE = 'editPhone';
     const NAV_DELETE_PHONE = 'editPhone';
+
+    const NAV_DOWNLOAD_LABOUR_CONTRACT = 'downloadLabourContract';
 
 }

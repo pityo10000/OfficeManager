@@ -63,8 +63,16 @@ class EmployeeController {
             $addressId = $_POST['homeAddressId'];
         }
 
-        $this->employeeService->modifyById($id, $firstName, $lastName, $post, $workingRoomId, $supervisorId, $addressId);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST);
+        $file = null;
+        $filename = null;
+
+        if (isset($_FILES['labourContract'])) {
+            $filename = $_FILES['labourContract']['name'];
+            $file = $_FILES['labourContract']['tmp_name'];
+        }
+
+        $this->employeeService->modifyById($id, $firstName, $lastName, $post, $workingRoomId, $supervisorId, $addressId, $file, $filename);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EMPLOYEE_LIST);
     }
 
     public function createEmployee() {
@@ -85,14 +93,22 @@ class EmployeeController {
             $addressId = $_POST['homeAddressId'];
         }
 
-        $this->employeeService->insert($firstName, $lastName, $post, $workingRoomId, $supervisorId, $addressId);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST);
+        $file = null;
+        $filename = null;
+
+        if (isset($_FILES['labourContract'])) {
+            $filename = $_FILES['labourContract']['name'];
+            $file = $_FILES['labourContract']['tmp_name'];
+        }
+
+        $this->employeeService->insert($firstName, $lastName, $post, $workingRoomId, $supervisorId, $addressId, $file, $filename);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EMPLOYEE_LIST);
     }
 
     public function deleteEmployee() {
         $id = $_GET['id'];
 
         $this->employeeService->delete($id);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EMPLOYEE_LIST);
     }
 }

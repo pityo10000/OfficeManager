@@ -33,14 +33,14 @@ class RoomFormView extends DefaultView {
 
                 if ($this->isNewItem) {
                     echo '
-                    <form method="POST" action="' . UrlUtil::MAIN_URL . '">
-                      <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_CREATE_ROOM . '"/>
+                    <form method="POST" action="' . UrlConstants::MAIN_URL . '">
+                      <input type="hidden" name="operation" value="' . UrlConstants::OPERATION_CREATE_ROOM . '"/>
                     ';
                 } else {
                     echo '
-                    <form method="POST" action="' . UrlUtil::MAIN_URL . '">
+                    <form method="POST" action="' . UrlConstants::MAIN_URL . '">
                       <input type="hidden" name="id" value="' . $room->getId() . '"/>
-                    <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_MODIFY_ROOM . '"/>
+                    <input type="hidden" name="operation" value="' . UrlConstants::OPERATION_MODIFY_ROOM . '"/>
                       ';
                 }
                       echo '<div class="form-group">
@@ -61,7 +61,7 @@ class RoomFormView extends DefaultView {
                         </div>
                         <div class="col-md-9"></div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_ROOM_LIST . '">Vissza</a>
+                            <a class="btn btn-default" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_ROOM_LIST . '">Vissza</a>
                         </div>
                       </div>
                 </form>

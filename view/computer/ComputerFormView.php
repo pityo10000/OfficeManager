@@ -33,14 +33,14 @@ class ComputerFormView extends DefaultView {
 
                 if ($this->isNewItem) {
                     echo '
-                    <form method="POST" action="' . UrlUtil::MAIN_URL . '">
-                      <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_CREATE_COMPUTER . '"/>
+                    <form method="POST" action="' . UrlConstants::MAIN_URL . '">
+                      <input type="hidden" name="operation" value="' . UrlConstants::OPERATION_CREATE_COMPUTER . '"/>
                     ';
                 } else {
                     echo '
-                    <form method="POST" action="' . UrlUtil::MAIN_URL . '">
+                    <form method="POST" action="' . UrlConstants::MAIN_URL . '">
                       <input type="hidden" name="id" value="' . $computer->getId() . '"/>
-                    <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_MODIFY_COMPUTER . '"/>
+                    <input type="hidden" name="operation" value="' . UrlConstants::OPERATION_MODIFY_COMPUTER . '"/>
                       ';
                 }
                       echo '<div class="form-group">
@@ -95,7 +95,7 @@ class ComputerFormView extends DefaultView {
                         </div>
                         <div class="col-md-9"></div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_COMPUTER_LIST . '">Vissza</a>
+                            <a class="btn btn-default" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_COMPUTER_LIST . '">Vissza</a>
                         </div>
                       </div>
                 </form>

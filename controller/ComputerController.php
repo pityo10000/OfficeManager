@@ -49,7 +49,7 @@ class ComputerController {
         }
 
         $this->computerService->modifyById($id, $brand, $model, $ownerId, $storage, $ram);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_COMPUTER_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_COMPUTER_LIST);
     }
 
     public function createComputer() {
@@ -63,13 +63,13 @@ class ComputerController {
         }
 
         $this->computerService->insert($brand, $model, $ownerId, $storage, $ram);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_COMPUTER_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_COMPUTER_LIST);
     }
 
     public function deleteComputer() {
         $id = $_GET['id'];
 
         $this->computerService->delete($id);
-        header('Location: ' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_COMPUTER_LIST);
+        header('Location: ' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_COMPUTER_LIST);
     }
 }

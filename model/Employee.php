@@ -9,6 +9,7 @@ class Employee {
     private $workingRoomId;
     private $supervisorId;
     private $homeAddressId;
+    private $labourContract;
 
     public function getId() {
         return $this->id;
@@ -65,4 +66,14 @@ class Employee {
     public function setHomeAddressId($homeAddressId) {
         $this->homeAddressId = $homeAddressId;
     }
+
+    public function getLabourContract() {
+        return $this->labourContract;
+    }
+
+    public function setLabourContract($labourContract) {
+        $this->labourContract = $labourContract;
+    }
+
+
 }

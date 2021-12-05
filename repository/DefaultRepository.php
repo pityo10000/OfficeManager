@@ -34,17 +34,16 @@ class DefaultRepository {
     }
 
     protected function runQuery($query) {
-//        echo $query;
         $result = $this->connection->query($query);
         return $result;
     }
 
-    protected function getMaxId($table) {
-        $max = $this->runQuery("
-        SELECT MAX(T.ID)
-        FROM " . $table . " T
-        WHERE T.ID = ");
-        return $max;
+    protected function retrieveNextId($table) {
+        $results = $this->runQuery("
+        SELECT MAX(T.ID) + 1 AS ID
+        FROM " . $table . " T");
+        $result = $results->fetch_assoc();
+        return $result['ID'];
     }
 
 }

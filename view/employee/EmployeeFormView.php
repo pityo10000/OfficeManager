@@ -33,14 +33,14 @@ class EmployeeFormView extends DefaultView {
 
                 if ($this->isNewItem) {
                     echo '
-                    <form method="POST" action="' . UrlUtil::MAIN_URL . '">
-                      <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_CREATE_EMPLOYEE . '"/>
+                    <form method="POST" action="' . UrlConstants::MAIN_URL . '" enctype="multipart/form-data">
+                      <input type="hidden" name="operation" value="' . UrlConstants::OPERATION_CREATE_EMPLOYEE . '"/>
                     ';
                 } else {
                     echo '
-                    <form method="POST" action="' . UrlUtil::MAIN_URL . '">
+                    <form method="POST" action="' . UrlConstants::MAIN_URL . '" enctype="multipart/form-data">
                       <input type="hidden" name="id" value="' . $employee->getId() . '"/>
-                    <input type="hidden" name="operation" value="' . UrlUtil::OPERATION_MODIFY_EMPLOYEE . '"/>
+                    <input type="hidden" name="operation" value="' . UrlConstants::OPERATION_MODIFY_EMPLOYEE . '"/>
                       ';
                 }
                       echo '<div class="row form-group">
@@ -55,6 +55,16 @@ class EmployeeFormView extends DefaultView {
                         <label for="post">Munkakör</label>
                         <input type="text" class="form-control" id="post" name="post" value="' . $employee->getPost() . '" required>
                       </div>
+                      <div class="row form-group">
+                        <label for="labourContract">Munkaszerződés</label>
+                        <input type="file" class="form-control" id="labourContract" name="labourContract">';
+
+                if ($employee->getLabourContract() != null && $employee->getLabourContract()->getId() != null) {
+                    echo '<a target="_blank" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_DOWNLOAD_LABOUR_CONTRACT . '&id=' . $employee->getLabourContract()->getId() . '">Munkaszerződés letöltése</a>';
+                }
+
+
+                      echo '</div>
                       <div class=" form-group">
                           <p>
                               <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#rooms">
@@ -144,13 +154,14 @@ class EmployeeFormView extends DefaultView {
                               </div>
                           </div>     
                       </div>
+                      
                       <div class="row">
                         <div class="col-md-2">
                             <button class="btn btn-primary">Mentés</button>
                         </div>
                         <div class="col-md-9"></div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EMPLOYEE_LIST . '">Vissza</a>
+                            <a class="btn btn-default" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EMPLOYEE_LIST . '">Vissza</a>
                         </div>
                       </div>
                 </form>

@@ -12,11 +12,11 @@ class RoomListView extends DefaultView {
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-2">
-                <a class="btn btn-default" href="' . UrlUtil::MAIN_URL . '">Vissza</a>
+                <a class="btn btn-default" href="' . UrlConstants::MAIN_URL . '">Vissza</a>
             </div>
             <div class="col-md-5"></div>
             <div class="col-md-1">
-              <a class="btn btn-primary" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_NEW_ROOM . '">Új hozzáadása</a>      
+              <a class="btn btn-primary" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_NEW_ROOM . '">Új hozzáadása</a>      
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -43,8 +43,8 @@ class RoomListView extends DefaultView {
                   <td>' . $room->getDoorNumber() .'</td>
                   <td>' . $room->getCapacity() .'</td>
                   <td>
-                    <a class="btn btn-primary" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_EDIT_ROOM . '&id=' . $room->getId() . '">Szerkesztés</a>              
-                    <a class="btn btn-danger" href="' . UrlUtil::MAIN_URL . '?nav=' . UrlUtil::NAV_DELETE_ROOM . '&id=' . $room->getId() . '">Törlés</a>              
+                    <a class="btn btn-primary" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EDIT_ROOM . '&id=' . $room->getId() . '">Szerkesztés</a>              
+                    <a class="btn btn-danger" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_DELETE_ROOM . '&id=' . $room->getId() . '">Törlés</a>              
                   </td>
                 </tr>
             ';

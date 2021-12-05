@@ -3,7 +3,7 @@ require_once "model/Phone.php";
 require_once "model/Device.php";
 require_once "repository/DefaultRepository.php";
 
-class PhoneRepository extends DefaultRepository {
+class PhoneRepository extends DeviceRepository {
     function findAll() {
         $results = $this->runQuery("
         SELECT D.ID, D.BRAND, D.MODEL, D.OWNER_ID, P.PHONE_NUMBER
@@ -53,11 +53,10 @@ class PhoneRepository extends DefaultRepository {
     }
 
     function insert($brand, $model, $ownerId, $phoneNumber) {
-        $newId = $this->getMaxId("DEVICE");
+        $newId = $this->getNextId();
         if ($newId == null) {
-            $newId = 0;
+            $newId = 1;
         }
-        $newId++;
         $this->runQuery("INSERT INTO DEVICE (ID, BRAND, MODEL, OWNER_ID) VALUE (" . $newId . ",
         '" . $brand . "', '" . $model . "', " . $ownerId . ")");
         $this->runQuery("INSERT INTO PHONE (ID, PHONE_NUMBER) VALUE (" . $newId . ", '" . $phoneNumber . "')");

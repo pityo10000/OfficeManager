@@ -1,9 +1,9 @@
 <?php
 require_once "model/Computer.php";
 require_once "model/Device.php";
-require_once "repository/DefaultRepository.php";
+require_once "repository/DeviceRepository.php";
 
-class ComputerRepository extends DefaultRepository {
+class ComputerRepository extends DeviceRepository {
     function findAll() {
         $results = $this->runQuery("
         SELECT D.ID, D.BRAND, D.MODEL, D.OWNER_ID, C.RAM, C.STORAGE
@@ -54,11 +54,10 @@ class ComputerRepository extends DefaultRepository {
     }
 
     function insert($brand, $model, $ownerId, $storage, $ram) {
-        $newId = $this->getMaxId("DEVICE");
+        $newId = $this->getNextId();
         if ($newId == null) {
-            $newId = 0;
+            $newId = 1;
         }
-        $newId++;
         $this->runQuery("INSERT INTO DEVICE (ID, BRAND, MODEL, OWNER_ID) VALUE (" . $newId . ",
         '" . $brand . "', '" . $model . "', " . $ownerId . ")");
         $this->runQuery("INSERT INTO COMPUTER (ID, STORAGE, RAM) VALUE (" . $newId . ",
