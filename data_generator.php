@@ -36,7 +36,7 @@ function generateComputer() {
 function generatePhone() {
         $phoneNumberPostfix = 1111;
         for ($id = 30; $id < 60; $id++) {
-            echo "INSERT INTO DEVICE (ID, BRAND, MODEL) VALUE (" . $id . ", 'DELL', 'D" . rand(1,100) . "');";
+            echo "INSERT INTO DEVICE (ID, BRAND, MODEL) VALUE (" . $id . ", 'Yavaho', 'Y" . rand(1,100) . "');";
             echo "</br>";
             echo "INSERT INTO PHONE (ID, PHONE_NUMBER) VALUE (" . $id . ", '+36-1-460-" . $phoneNumberPostfix++ . "');";
             echo "</br>";
