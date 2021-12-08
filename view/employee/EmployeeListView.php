@@ -31,6 +31,7 @@ class EmployeeListView extends DefaultView {
                       <th scope="col">Vezetéknév</th>
                       <th scope="col">Keresztnév</th>
                       <th scope="col">Munkakör</th>
+                      <th scope="col">Eszközök száma</th>
                       <th scope="col">Műveletek</th>
                     </tr>
                   </thead>
@@ -44,6 +45,7 @@ class EmployeeListView extends DefaultView {
                   <td>' . $employee->getLastName() .'</td>
                   <td>' . $employee->getFirstName() .'</td>
                   <td>' . $employee->getPost() .'</td>
+                  <td>' . $employee->getDeviceCount() .'</td>
                   <td>
                     <a class="btn btn-primary" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_EDIT_EMPLOYEE . '&id=' . $employee->getId() . '">Szerkesztés</a>              
                     <a class="btn btn-danger" href="' . UrlConstants::MAIN_URL . '?nav=' . UrlConstants::NAV_DELETE_EMPLOYEE . '&id=' . $employee->getId() . '">Törlés</a>              

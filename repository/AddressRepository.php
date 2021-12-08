@@ -8,7 +8,7 @@ class AddressRepository extends DefaultRepository {
         $results = $this->runQuery("SELECT A.ID, A.STREET_NAME, A.STREET_TYPE, A.STREET_NUMBER, A.ZIP_CODE, A.CITY, A.COUNTRY, COUNT(E.ID) AS EMPLOYEE_COUNT
         FROM ADDRESS A
         LEFT JOIN EMPLOYEE E on A.ID = E.ADDRESS_ID
-        GROUP BY E.ID");
+        GROUP BY A.ID");
         $addresses = array();
         while ($result = $results->fetch_assoc()) {
             $address = $this->resultToAddress($result);

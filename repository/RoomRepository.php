@@ -5,12 +5,10 @@ require_once "repository/DefaultRepository.php";
 class RoomRepository extends DefaultRepository {
 
     function findAll() {
-        $results = $this->runQuery("SELECT R.ID, R.DOOR_NUMBER, R.CAPACITY, R.FLOOR, (
-            SELECT COUNT(E.ID)
-            FROM employee E
-            WHERE E.WORKING_ROOM_ID = R.ID
-            ) AS EMPLOYEE_COUNT
-        FROM ROOM R");
+        $results = $this->runQuery("SELECT R.ID, R.DOOR_NUMBER, R.CAPACITY, R.FLOOR, COUNT(E.ID) AS EMPLOYEE_COUNT
+            FROM ROOM R
+            LEFT JOIN EMPLOYEE E on R.ID = E.WORKING_ROOM_ID
+            GROUP BY R.ID");
         $rooms = array();
         while ($result = $results->fetch_assoc()) {
             $room = $this->resultToRoom($result);

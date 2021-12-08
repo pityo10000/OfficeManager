@@ -10,6 +10,7 @@ class Employee {
     private $supervisorId;
     private $homeAddressId;
     private $labourContract;
+    private $deviceCount;
 
     public function getId() {
         return $this->id;
@@ -74,6 +75,15 @@ class Employee {
     public function setLabourContract($labourContract) {
         $this->labourContract = $labourContract;
     }
+
+    public function getDeviceCount() {
+        return $this->deviceCount;
+    }
+
+    public function setDeviceCount($deviceCount) {
+        $this->deviceCount = $deviceCount;
+    }
+
 
 
 }

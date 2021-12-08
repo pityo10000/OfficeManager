@@ -7,9 +7,12 @@ class EmployeeRepository extends DefaultRepository {
 
     function findAll() {
         $results = $this->runQuery("SELECT E.ID, E.FIRST_NAME, E.LAST_NAME, E.POST, E.WORKING_ROOM_ID, 
-        E.SUPERVISOR_ID, E.ADDRESS_ID, F.ID AS FILE_ID, F.FILE_NAME
-        FROM EMPLOYEE E
-        LEFT JOIN FILE F ON E.LABOUR_CONTRACT_ID = F.ID");
+        E.SUPERVISOR_ID, E.ADDRESS_ID, (
+            SELECT COUNT(D.ID)
+            FROM DEVICE D
+            WHERE D.OWNER_ID = E.ID
+            ) AS DEVICE_COUNT
+        FROM EMPLOYEE E");
         $employees = array();
         while ($result = $results->fetch_assoc()) {
             $employee = $this->resultToEmployee($result);
@@ -44,11 +47,17 @@ class EmployeeRepository extends DefaultRepository {
         $employee->setSupervisorId($result["SUPERVISOR_ID"]);
         $employee->setHomeAddressId($result["ADDRESS_ID"]);
 
-        $labourContract = new File();
-        $labourContract->setId($result["FILE_ID"]);
-        $labourContract->setFileName($result["FILE_NAME"]);
+        if (isset($result["DEVICE_COUNT"])) {
+            $employee->setDeviceCount($result["DEVICE_COUNT"]);
+        }
 
-        $employee->setLabourContract($labourContract);
+        if (isset($result["FILE_ID"])) {
+            $labourContract = new File();
+            $labourContract->setId($result["FILE_ID"]);
+            $labourContract->setFileName($result["FILE_NAME"]);
+
+            $employee->setLabourContract($labourContract);
+        }
         return $employee;
     }
 
